@@ -153,6 +153,9 @@ jobs:
           cd common
           wget https://github.com/reigadegr/codex_action/raw/main/patchs/mimalloc.patch
           patch -p1 -F 3 mimalloc.patch
+          version="$(git ls-remote --tags https://github.com/openai/codex.git | grep -oE 'rust-v[0-9]+\.[0-9]+\.[0-9]+$' | sed 's/rust-v//' | sort -Vr | head -1)"
+          sed -i "s/0.0.0/$version/g" codex-rs/Cargo.toml
+          cat codex-rs/Cargo.toml
           mv codex-rs ../
           cd ..
           rm -rf common
