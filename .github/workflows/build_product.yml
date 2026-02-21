@@ -148,15 +148,14 @@ jobs:
       - name: "📥 Download github project code"
         shell: bash
         run: |
-          # export MY_PAT="${{ secrets.MY_PAT }}"
-          # git clone --depth 1 https://reigadegr:${MY_PAT}@github.com/reigadegr/zeroclaw common
-          git clone --depth 1 https://github.com/reigadegr/zeroclaw common -b perf
+          git clone --depth 1 https://github.com/openai/codex common -b perf
           cd common
           wget https://github.com/reigadegr/codex_action/raw/main/patchs/mimalloc.patch
           patch -p1 -F 3 mimalloc.patch
           version="$(git ls-remote --tags https://github.com/openai/codex.git | grep -oE 'rust-v[0-9]+\.[0-9]+\.[0-9]+$' | sed 's/rust-v//' | sort -Vr | head -1)"
           sed -i "s/0.0.0/$version/g" codex-rs/Cargo.toml
           cat codex-rs/Cargo.toml
+          cd codex-rs; cargo add mimalloc --features no_thp,override -p codex; cd  ..
           mv codex-rs ../
           cd ..
           rm -rf common
