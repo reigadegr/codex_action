@@ -7,7 +7,7 @@ export RUSTFLAGS="
     -C default-linker-libraries
     -C code-model=small
     -C relocation-model=pie
-    -C link-arg=-fuse-ld=mold
+    -C link-arg=-fuse-ld=lld
     -C symbol-mangling-version=v0
     -C llvm-args=-fp-contract=off
     -C llvm-args=-enable-misched
