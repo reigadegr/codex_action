@@ -1,0 +1,65 @@
+diff --git a/codex-rs/Cargo.toml b/codex-rs/Cargo.toml
+index d23ed3c..5146a01 100644
+--- a/codex-rs/Cargo.toml
++++ b/codex-rs/Cargo.toml
+@@ -216,7 +216,7 @@ ratatui = "0.29.0"
+ ratatui-macros = "0.6.0"
+ regex = "1.12.3"
+ regex-lite = "0.1.8"
+-reqwest = "0.12"
++reqwest = { version = "0.12", default-features = false, features = ["rustls-tls"] }
+ rmcp = { version = "0.15.0", default-features = false }
+ runfiles = { git = "https://github.com/dzbarsky/rules_rust", rev = "b56cbaa8465e74127f1ea216f813cd377295ad81" }
+ rustls = { version = "0.23", default-features = false, features = [
+diff --git a/codex-rs/feedback/Cargo.toml b/codex-rs/feedback/Cargo.toml
+index 73803af..75e7abc 100644
+--- a/codex-rs/feedback/Cargo.toml
++++ b/codex-rs/feedback/Cargo.toml
+@@ -7,7 +7,7 @@ license.workspace = true
+ [dependencies]
+ anyhow = { workspace = true }
+ codex-protocol = { workspace = true }
+-sentry = { version = "0.46" }
++sentry = { version = "0.46", default-features = false, features = ["reqwest", "rustls"] }
+ tracing = { workspace = true }
+ tracing-subscriber = { workspace = true }
+ 
+diff --git a/codex-rs/lmstudio/Cargo.toml b/codex-rs/lmstudio/Cargo.toml
+index 5f48496..0430d2e 100644
+--- a/codex-rs/lmstudio/Cargo.toml
++++ b/codex-rs/lmstudio/Cargo.toml
+@@ -11,7 +11,7 @@ path = "src/lib.rs"
+ 
+ [dependencies]
+ codex-core = { path = "../core" }
+-reqwest = { version = "0.12", features = ["json", "stream"] }
++reqwest = { version = "0.12", default-features = false, features = ["json", "stream", "rustls-tls"] }
+ serde_json = "1"
+ tokio = { version = "1", features = ["rt"] }
+ tracing = { version = "0.1.44", features = ["log"] }
+diff --git a/codex-rs/rmcp-client/Cargo.toml b/codex-rs/rmcp-client/Cargo.toml
+index 951bb0d..a44f018 100644
+--- a/codex-rs/rmcp-client/Cargo.toml
++++ b/codex-rs/rmcp-client/Cargo.toml
+@@ -19,7 +19,7 @@ codex-utils-pty = { workspace = true }
+ codex-utils-home-dir = { workspace = true }
+ futures = { workspace = true, default-features = false, features = ["std"] }
+ keyring = { workspace = true, features = ["crypto-rust"] }
+-oauth2 = "5"
++oauth2 = { version = "5", default-features = false, features = ["reqwest", "rustls-tls"] }
+ reqwest = { version = "0.12", default-features = false, features = [
+     "json",
+     "stream",
+diff --git a/codex-rs/tui/Cargo.toml b/codex-rs/tui/Cargo.toml
+index 683b082..998be52 100644
+--- a/codex-rs/tui/Cargo.toml
++++ b/codex-rs/tui/Cargo.toml
+@@ -68,7 +68,7 @@ ratatui = { workspace = true, features = [
+ ] }
+ ratatui-macros = { workspace = true }
+ regex-lite = { workspace = true }
+-reqwest = { version = "0.12", features = ["json"] }
++reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+ rmcp = { workspace = true }
+ serde = { workspace = true, features = ["derive"] }
+ serde_json = { workspace = true, features = ["preserve_order"] }
