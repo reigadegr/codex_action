@@ -57,7 +57,9 @@ runs:
         fi
         rustup default "$toolchain"
         rustup component add rust-src llvm-tools-preview clippy rustfmt
-        rustup component add rust-src --toolchain "$toolchain"-"${{ inputs.target }}"
+        if [ -z "$(echo ${{ inputs.target }} | grep android)" ]; then
+            rustup component add rust-src --toolchain "$toolchain"-"${{ inputs.target }}"
+        fi
         rustup target add "${{ inputs.target }}" --toolchain "$toolchain"
         rustup update
 
