@@ -93,7 +93,7 @@ jobs:
           git config --global user.name "reigadegr_action"
           git config --global user.email "1145141919810@qq.com"
 
-      - name: Setup ndk
+      - name: Setup ndk and cargo ndk
         if: runner.os == 'Linux'
         run: |
           ndk_url=$(wget -qO- https://github.com/android/ndk/releases/latest | grep -e 'https://dl.google.com/android/repository/android-ndk-.*-linux.zip' | sed -n 's/.*<a href="\([^"]*\)".*/\1/p')
@@ -103,6 +103,7 @@ jobs:
           mv ~/ndk_temp/*/* ~/ndk_temp
           wget https://github.com/reigadegr/thread-opt_builder/raw/main/libbinder_ndk.so
           cp -f libbinder_ndk.so ~/ndk_temp/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/35/libbinder_ndk.so
+          cargo install cargo-ndk
 
       - name: "🔧 Setup TimeZone"
         if: runner.os == 'Linux'
