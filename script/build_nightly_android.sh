@@ -36,4 +36,8 @@ export CARGO_TERM_COLOR=always
 
 export JEMALLOC_SYS_DISABLE_WARN_ERROR=1
 
+export ANDROID_NDK_HOME=$(realpath ~/ndk_temp)
+
+export ANDROID_NDK_ROOT=$ANDROID_NDK_HOME
+
 cargo +nightly ndk --platform 35 -t arm64-v8a build --target aarch64-linux-android -Z trim-paths --verbose -r -Z build-std=core,alloc,std,panic_abort
