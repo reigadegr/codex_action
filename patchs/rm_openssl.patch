@@ -1,5 +1,5 @@
 diff --git a/codex-rs/Cargo.toml b/codex-rs/Cargo.toml
-index d23ed3c..5146a01 100644
+index b3bb85d..75f1925 100644
 --- a/codex-rs/Cargo.toml
 +++ b/codex-rs/Cargo.toml
 @@ -216,7 +216,7 @@ ratatui = "0.29.0"
@@ -51,15 +51,15 @@ index 951bb0d..a44f018 100644
      "json",
      "stream",
 diff --git a/codex-rs/tui/Cargo.toml b/codex-rs/tui/Cargo.toml
-index 683b082..998be52 100644
+index 1a87314..999b88f 100644
 --- a/codex-rs/tui/Cargo.toml
 +++ b/codex-rs/tui/Cargo.toml
-@@ -68,7 +68,7 @@ ratatui = { workspace = true, features = [
+@@ -70,7 +70,7 @@ ratatui = { workspace = true, features = [
  ] }
  ratatui-macros = { workspace = true }
  regex-lite = { workspace = true }
--reqwest = { version = "0.12", features = ["json"] }
-+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+-reqwest = { workspace = true, features = ["json", "multipart"] }
++reqwest = { workspace = true, features = ["json", "rustls-tls", "multipart"] }
  rmcp = { workspace = true }
  serde = { workspace = true, features = ["derive"] }
  serde_json = { workspace = true, features = ["preserve_order"] }
