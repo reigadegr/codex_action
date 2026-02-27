@@ -158,6 +158,7 @@ jobs:
           version="$(git ls-remote --tags https://github.com/openai/codex.git | grep -oE 'rust-v[0-9]+\.[0-9]+\.[0-9]+$' | sed 's/rust-v//' | sort -Vr | head -1)"
           sed -i "s/0.0.0/$version/g" codex-rs/Cargo.toml
           cat codex-rs/Cargo.toml
+          rm -f codex-rs/rust-toolchain.toml
           cd codex-rs; cargo add mimalloc --features no_thp,override -p codex-cli; cd  ..
           mv codex-rs ../
           cd ..

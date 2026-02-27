@@ -4,9 +4,8 @@ unset RUSTFLAGS
 
 export RUSTFLAGS="
     -C relro-level=full
-    -C default-linker-libraries
     -C code-model=small
-    -C relocation-model=pie
+    -C default-linker-libraries 
     -C link-arg=-fuse-ld=mold
     -C symbol-mangling-version=v0
     -C llvm-args=-fp-contract=off
@@ -18,7 +17,7 @@ export RUSTFLAGS="
     -C link-args=-Wl,-O3,--gc-sections,--as-needed
     -C link-args=-Wl,-x,-z,noexecstack,--pack-dyn-relocs=relr,-s,--strip-all,--relax
 "
-
+    
 echo $RUSTFLAGS
 
 export CARGO_TERM_COLOR=always

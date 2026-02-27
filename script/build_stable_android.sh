@@ -8,6 +8,7 @@ export RUSTFLAGS="
     -C code-model=small
     -C relocation-model=pie
     -C link-arg=-fuse-ld=lld
+    -C link-arg=-lc++abi
     -C symbol-mangling-version=v0
     -C llvm-args=-fp-contract=off
     -C llvm-args=-enable-misched
