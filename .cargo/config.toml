@@ -22,9 +22,3 @@ debug = 0
 debug-assertions = false
 incremental = false
 panic = "abort"
-
-# Android NDK configuration - override global mold linker for Android
-[target.aarch64-linux-android]
-rustflags = ["-C", "link-arg=-fuse-ld=lld"]
-[target.armv7-linux-androideabi]
-rustflags = ["-C", "link-arg=-fuse-ld=lld"]
