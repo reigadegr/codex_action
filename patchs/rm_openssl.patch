@@ -1,8 +1,8 @@
 diff --git a/codex-rs/Cargo.toml b/codex-rs/Cargo.toml
-index b3bb85d..75f1925 100644
+index 01836cd..c78bc07 100644
 --- a/codex-rs/Cargo.toml
 +++ b/codex-rs/Cargo.toml
-@@ -216,7 +216,7 @@ ratatui = "0.29.0"
+@@ -223,7 +223,7 @@ ratatui = "0.29.0"
  ratatui-macros = "0.6.0"
  regex = "1.12.3"
  regex-lite = "0.1.8"
@@ -51,10 +51,10 @@ index 951bb0d..a44f018 100644
      "json",
      "stream",
 diff --git a/codex-rs/tui/Cargo.toml b/codex-rs/tui/Cargo.toml
-index 1a87314..999b88f 100644
+index 594acb3..f2c2536 100644
 --- a/codex-rs/tui/Cargo.toml
 +++ b/codex-rs/tui/Cargo.toml
-@@ -70,7 +70,7 @@ ratatui = { workspace = true, features = [
+@@ -71,7 +71,7 @@ ratatui = { workspace = true, features = [
  ] }
  ratatui-macros = { workspace = true }
  regex-lite = { workspace = true }

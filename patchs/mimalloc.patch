@@ -1,8 +1,8 @@
 diff --git a/codex-rs/cli/src/main.rs b/codex-rs/cli/src/main.rs
-index e5478f1..61b360b 100644
+index c271fe0..314b33b 100644
 --- a/codex-rs/cli/src/main.rs
 +++ b/codex-rs/cli/src/main.rs
-@@ -542,6 +542,9 @@ fn stage_str(stage: codex_core::features::Stage) -> &'static str {
+@@ -543,6 +543,9 @@ fn stage_str(stage: codex_core::features::Stage) -> &'static str {
      }
  }
  
@@ -10,5 +10,5 @@ index e5478f1..61b360b 100644
 +static GLOBAL: mimalloc::MiMalloc = mimalloc::MiMalloc;
 +
  fn main() -> anyhow::Result<()> {
-     if codex_core::maybe_run_zsh_exec_wrapper_mode()? {
-         return Ok(());
+     arg0_dispatch_or_else(|arg0_paths: Arg0DispatchPaths| async move {
+         cli_main(arg0_paths).await?;
