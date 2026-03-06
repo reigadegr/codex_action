@@ -151,10 +151,12 @@ jobs:
         run: |
           git clone --depth 1 https://github.com/openai/codex common
           cd common
-          curl -L https://github.com/reigadegr/codex_action/raw/main/patchs/mimalloc.patch -o mimalloc.patch
-          patch -p1 -F 3 < mimalloc.patch
-          curl -L https://github.com/reigadegr/codex_action/raw/main/patchs/rm_openssl.patch -i rm_openssl.patch
-          patch -p1 -F 3 < rm_openssl.patch
+          for i in "mimalloc.patch" \
+          "rm_openssl.patch" \
+          "rm_ppt_rs_openssl.patch"; do
+              curl -L https://github.com/reigadegr/codex_action/raw/main/patchs/$i -o $i
+              patch -p1 -F 3 < $i
+          done
           version="$(git ls-remote --tags https://github.com/openai/codex.git | grep -oE 'rust-v[0-9]+\.[0-9]+\.[0-9]+$' | sed 's/rust-v//' | sort -Vr | head -1)"
           sed -i "s/0.0.0/$version/g" codex-rs/Cargo.toml
           cat codex-rs/Cargo.toml
