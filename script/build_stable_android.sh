@@ -30,4 +30,6 @@ export ANDROID_NDK_HOME=$(realpath ~/ndk_temp)
 
 export ANDROID_NDK_ROOT=$ANDROID_NDK_HOME
 
+export V8_FROM_SOURCE=1
+
 cargo +stable ndk --platform 35 -t arm64-v8a build --target "$1" -r --bin "$2"
