@@ -32,4 +32,14 @@ export ANDROID_NDK_ROOT=$ANDROID_NDK_HOME
 
 export V8_FROM_SOURCE=1
 
+sudo apt-get update
+sudo apt-get install -y \
+    python3 \
+    curl \
+    git \
+    unzip \
+    pkg-config \
+    libglib2.0-dev \
+    libclang-19-dev
+
 cargo +stable ndk --platform 35 -t arm64-v8a build --target "$1" -r --bin "$2"
